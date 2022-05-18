@@ -1,5 +1,6 @@
 #include <Wire.h>
 #include <I2C_LCD.h>
+#include <SoftwareSerial.h>
 
 I2C_LCD LCD;
 uint8_t I2C_LCD_ADDRESS = 0x51; //Device address configuration, the default value is 0x51.
@@ -15,7 +16,9 @@ void setup() {
 void loop() {
   LCD.FontModeConf(Font_6x8, FM_ANL_AAA, BLACK_BAC);
   LCD.CharGotoXY(0,0);       //Set the start coordinate.
+  //Serial.print("test");
   if (Serial1.available()) {
+    Serial.print("test1");
     char rec = (char)Serial1.read();
     if(rec != '_'){
       rx.concat(String(rec));
